@@ -14,7 +14,7 @@ import ListItemButton from '@mui/material/ListItemButton';
 import ListItemIcon from '@mui/material/ListItemIcon';
 import NavigationBar from '../nav-bar';
 
-import { menuItems } from './utils';
+import { menuListItems } from './utils';
 
 
 const drawerWidth = 240;
@@ -112,14 +112,15 @@ const MiniDrawer: FunctionComponent<PropsWithChildren> = ({ children }) => {
                 </DrawerHeader>
                 <Divider />
                 <List>
-                    {menuItems.map((Text, index) => (
-                        <ListItem key={index} disablePadding sx={{ display: 'block' }}>
+                    {menuListItems.map((text, index) => (
+                        <ListItem key={index+text.id} disablePadding sx={{ display: 'block' }}>
                             <ListItemButton
                                 sx={{
                                     minHeight: 48,
                                     justifyContent: open ? 'initial' : 'center',
                                     px: 2.5,
                                 }}
+                                onClick={text.redirection}
                             >
                                 <ListItemIcon
                                     sx={{
@@ -128,7 +129,7 @@ const MiniDrawer: FunctionComponent<PropsWithChildren> = ({ children }) => {
                                         justifyContent: 'center',
                                     }}
                                 >
-                                    <Text />
+                                    <text.active_icon />
                                 </ListItemIcon>
                             </ListItemButton>
                         </ListItem>

@@ -41,7 +41,7 @@ function MachineStaus({ setFiltredMachines }: machineProps) {
                                 height: '31px',
                                 width: 'max-content',
                                 alignItems: 'center',
-                                display: 'flex',
+                                display: 'flex'
                             }}
                             onClick={() => selectMachine(item.name)}
                         >
