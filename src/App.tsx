@@ -1,23 +1,37 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 
+//material
 import Typography from '@mui/material/Typography';
 import Grid from '@mui/material/Grid';
 import Box from '@mui/material/Box';
-import BasicTable from '../src/shared/basic-table';
-import InputSearch from '../src/shared/search';
-import { MACHINE_DATA, MACHINES } from '../src/utils/machine-data';
+
+//utils
+import { MACHINES } from '../src/utils/machine-data';
+
+//components
 import MachineStaus from '../src/components/machine-status';
 import MiniDrawer from '../src/shared/side-bar'
+import BasicTable from '../src/shared/basic-table';
+import InputSearch from '../src/shared/search';
+
+//api's
+import { getLiveMachineData } from './api';
+
+//hooks
+import { useApi } from './hooks/use-api'
 
 import './App.css'
 
 function App() {
 
-  const [filtredMachines, setFiltredMachines] = useState<any[]>(MACHINE_DATA)
+  const [filtredMachines, setFiltredMachines] = useState<any[]>([])
+  const [machineStaus, setMachineSataus] = useState<string>('')
+  const { isLoading, data: machineData, error } = useApi(getLiveMachineData, machineStaus)
 
-  const getMachineData = (data: any[]): void => {
-    setFiltredMachines(data)
-  }
+  useEffect(() => {
+    setFiltredMachines(machineData)
+  }, [machineData])
+
 
   return (
     <div className='appRoot'>
@@ -39,7 +53,9 @@ function App() {
             <Typography variant="h5">Compare Machines</Typography>
             <InputSearch />
             <hr style={{ borderTop: '0.5px solid #b8afaf' }}></hr>
-            <MachineStaus setFiltredMachines={getMachineData} />
+            <MachineStaus
+              handleMachineStatus={setMachineSataus}
+            />
           </Grid>
         </Grid>
         <Grid container spacing={1} marginTop={'unset'} style={{
@@ -69,6 +85,8 @@ function App() {
         </Grid>
         <BasicTable
           data={filtredMachines}
+          isLoading={isLoading}
+          error={error}
         />
       </MiniDrawer>
     </div>

@@ -8,7 +8,6 @@ export const MACHINE_STATUSES = {
     NO_STATUS: 'no status',
 }
 
-
 export const MACHINE_DATA = [
     {
         id: '1',
@@ -38,20 +37,6 @@ export const MACHINE_DATA = [
             avgTime: '2.90'
         },
     },
-    // {
-    //     id: '3',
-    //     deviceId: 'IOT_DEVICE_2',
-    //     machineName: 'Line 3 Extruder',
-    //     description: 'Building Extruders',
-    //     status: MACHINE_STATUSES.DANGER,
-    //     motorData: {
-    //         deviceId: "IOT_DEVICE_2",
-    //         sensorType: "IOT_DEVICE",
-    //         timestamp: +new Date,
-    //         sensorValues: Date.now() + 11234,
-    //         avgTime: '2.0'
-    //     },
-    // },
     {
         id: '4',
         deviceId: 'IOT_DEVICE_2',
