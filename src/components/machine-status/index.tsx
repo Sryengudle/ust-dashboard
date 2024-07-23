@@ -1,5 +1,5 @@
-
 import React from 'react'
+import RestartAltIcon from '@mui/icons-material/RestartAlt';
 import { AVG_VAlUES } from '../../utils/machine-data';
 import { getLiveMachineStatuses } from '../../api';
 import { useApi } from '../../hooks/use-api';
@@ -54,6 +54,9 @@ function MachineStaus({ handleMachineStatus }: machineProps) {
                                     </div>
                                 )
                             })}
+                            <div onClick={() => handleMachineStatus('')}>
+                                <RestartAltIcon sx={{ cursor: 'pointer' }} />
+                            </div>
                         </div>
 
                         <div style={{ display: 'flex', alignItems: 'center' }}>

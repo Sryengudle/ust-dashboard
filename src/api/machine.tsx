@@ -23,7 +23,7 @@ export function getLiveMachineData(query?: string) {
                     },
                 })
             }
-        }, 2000);
+        }, 1000);
     });
 }
 
